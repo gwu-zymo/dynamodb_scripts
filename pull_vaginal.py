@@ -16,7 +16,7 @@ while line:
     line_split = line.strip('\n').split('\t')
     print(line_split[1])
     run_ID = line_split[1]
-    all_run[run_ID] = line_split[6]
+    all_run[run_ID] = line_split[0]
     all_ID[line_split[2]] = run_ID
     all_metadata[line_split[9]] = line.strip('\n').replace(',', '-')
     line = inp.readline()
@@ -64,7 +64,7 @@ oup = open('zip_not_found.txt', 'w')
 
 for run_ID in all_run:
     folder = '%s.%s.zymo' % (run_ID, all_run[run_ID])
-    zip_file = 's3://midog/Projects/%s/analysis/%s.zip' % (run_ID, folder)
+    zip_file = 's3://precisionbiome/PrecisionBIOME_Vaginal/Projects/%s/analysis/%s.zip' % (run_ID, folder)
     try:
         os.system('aws s3 cp %s .' % zip_file)
         os.system('unzip %s.zip' % folder)
@@ -73,17 +73,24 @@ for run_ID in all_run:
         read_abd_file('./%s/midog.b.FungiITS/taxa_plots/sorted_otu_L7.txt' % folder)
 
         try:
-            read_abd_file('./%s/midog.c.AMR/taxa_plots/sorted_otu_L7.txt' % folder)
+            read_abd_file('./%s/midog.f.AMR/taxa_plots/sorted_otu_L7.txt' % folder)
         except:
-            print('no .c')
+            print('no .f')
+            
         try:
-            read_abd_file('./%s/midog.d.AMR/taxa_plots/sorted_otu_L7.txt' % folder)
+            read_abd_file('./%s/midog.f.AMRm/taxa_plots/sorted_otu_L7.txt' % folder)
         except:
-            print('no .d')
+            print('no .fm')
+            
         try:
-            read_abd_file('./%s/midog.k.AMRm/taxa_plots/sorted_otu_L7.txt' % folder)
+            read_abd_file('./%s/midog.g.VIRUS/taxa_plots/sorted_otu_L7.txt' % folder)
         except:
-            print('no .k')
+            print('no .g')
+            
+        try:
+            read_abd_file('./%s/midog.l.AMRm/taxa_plots/sorted_otu_L7.txt' % folder)
+        except:
+            print('no .l')
 
         os.system('rm *.zip')
         os.system('rm -r md*')
