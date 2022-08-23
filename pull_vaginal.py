@@ -15,7 +15,7 @@ while line:
     print(line[:100])
     line_split = line.strip('\n').split('\t')
     print(line_split[1])
-    run_ID = line_split[1]
+    run_ID = line_split[2].split('_')[0]
     all_run[run_ID] = line_split[0]
     all_ID[line_split[2]] = run_ID
     all_metadata[line_split[2]] = line.strip('\n').replace(',', '-')
