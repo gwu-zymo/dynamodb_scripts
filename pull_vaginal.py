@@ -7,17 +7,17 @@ all_run = {}
 all_ID = {}
 all_metadata = {}
 
-inp = open('TOC_1_31_22.txt', encoding = 'windows-1252')
+inp = open('TOC_pbv.txt', encoding = 'windows-1252')
 line = inp.readline()
 header = line.strip('\n')
 line = inp.readline()
 while line:
     print(line[:100])
     line_split = line.strip('\n').split('\t')
-    print(line_split[8])
-    run_ID = line_split[8].split('_')[0]
+    print(line_split[1])
+    run_ID = line_split[1]
     all_run[run_ID] = line_split[6]
-    all_ID[line_split[9]] = run_ID
+    all_ID[line_split[2]] = run_ID
     all_metadata[line_split[9]] = line.strip('\n').replace(',', '-')
     line = inp.readline()
 inp.close()
