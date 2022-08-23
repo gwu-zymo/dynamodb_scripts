@@ -93,7 +93,7 @@ for run_ID in all_run:
             print('no .l')
 
         os.system('rm *.zip')
-        os.system('rm -r md*')
+        os.system('rm -r pbv*')
     except:
         print('zip file not found')
         oup.write(zip_file + '\n')
