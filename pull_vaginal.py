@@ -105,8 +105,6 @@ all_spe_list = all_spe.keys()
 all_spe_write = []
 n = 1
 for species in all_spe_list:
-#    split = species.split(';')
-#    new_spe = '_'.join(split[0:1] + split[-2:]).replace('Bacteria', 'B').replace('Fungi', 'F').replace('Function', '')
     new_spe = modify_taxonomy_name(species)
     if len(new_spe) > 256:
         print(new_spe + ' name too long!')
