@@ -1,7 +1,7 @@
 #load the table of content
 import os
 
-#all_run: Run_Number (mdXXXX):date
+#all_run: Run_Number(pbvXXXX):date
 #all_ID: Tube_ID:Run_Number (only the newest run for each sample, if table in order)
 all_run = {}
 all_ID = {}
