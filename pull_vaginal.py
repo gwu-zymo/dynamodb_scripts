@@ -18,7 +18,7 @@ while line:
     run_ID = line_split[2].split('_')[0]
     all_run[run_ID] = line_split[0]
     all_ID[line_split[3]] = run_ID
-    all_metadata[line_split[2]] = line.strip('\n').replace(',', '-')
+    all_metadata[line_split[3]] = line.strip('\n').replace(',', '-')
     line = inp.readline()
 inp.close()
 
