@@ -17,8 +17,9 @@ while line:
     print(line_split[1])
     run_ID = line_split[2].split('_')[0]
     all_run[run_ID] = line_split[0]
-    all_ID[line_split[3].replace('-', '.').replace('_', '.')] = run_ID
-    all_metadata[line_split[3].replace('-', '.').replace('_', '.')] = line.strip('\n').replace(',', '-')
+    tube_ID = line_split[3].replace('-', '.').replace('_', '.')
+    all_ID[tube_ID] = run_ID
+    all_metadata[tube_ID] = line.strip('\n').replace(',', '-')
     line = inp.readline()
 inp.close()
 
@@ -92,11 +93,13 @@ for run_ID in all_run:
         except:
             print('no .l')
 
-        os.system('rm *.zip')
-        os.system('rm -r pbv*')
+        
     except:
         print('zip file not found')
         oup.write(zip_file + '\n')
+    
+    os.system('rm *.zip')
+    os.system('rm -r pbv*')
 oup.close()
 
 
