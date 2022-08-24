@@ -2,7 +2,8 @@
 import os
 
 #all_run: Run_Number(pbvXXXX):date
-#all_ID: Tube_ID:Run_Number (only the newest run for each sample, if table in order)
+#all_ID: tube_ID:Run_Number (only the newest run for each sample, if table in order)
+#all_metadata: tube_ID: whole line
 all_run = {}
 all_ID = {}
 all_metadata = {}
