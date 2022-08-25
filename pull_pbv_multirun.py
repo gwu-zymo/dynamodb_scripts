@@ -2,7 +2,7 @@
 import os
 
 #all_run: Run_Number(pbvXXXX):date
-#all_ID: tube_ID:Run_Number (only the newest run for each sample, if table in order)
+#all_ID: tube_ID_date:Run_Number (only the newest run for each sample, if table in order)
 #all_metadata: tube_ID: whole line
 all_run = {}
 all_ID = {}
@@ -69,6 +69,10 @@ for run_ID in all_run:
     zip_file = 's3://precisionbiome/PrecisionBIOME_Vaginal/Projects/%s/analysis/%s.zip' % (run_ID, folder)
     try:
         os.system('aws s3 cp %s .' % zip_file)
+    except:
+        oup.write(zip_file + '\n')
+        
+    try:
         os.system('unzip %s.zip' % folder)
 
         read_abd_file('./%s/midog.a.Bac16Sv13/taxa_plots/sorted_otu_L7.txt' % folder)
@@ -97,7 +101,7 @@ for run_ID in all_run:
         
     except:
         print('zip file not found')
-        oup.write(zip_file + '\n')
+        
     
     os.system('rm *.zip')
     os.system('rm -r pbv*')
