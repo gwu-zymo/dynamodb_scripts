@@ -74,9 +74,9 @@ for run_ID in all_run:
         oup.write(zip_file + '\n')
         
     r_date = []
-    nd = ''
     for f in os.listdir('./'):
         if f.endswith('.zymo.zip'):
+            nd = ''
             try:
                 nd = int(f.split('.')[1])
             except:
