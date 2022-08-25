@@ -4,7 +4,7 @@ import os, sys
 #all_run: Run_Number(pbvXXXX):date
 #all_ID: tube_ID_date:Run_Number (only the newest run for each sample, if table in order)
 #all_metadata: tube_ID: whole line
-#all_prev: previous ID: tube_ID
+#all_prev: tube_ID: previous ID
 all_run = {}
 all_ID = {}
 all_metadata = {}
@@ -23,7 +23,7 @@ while line:
     tube_ID = line_split[3].replace('-', '.').replace('_', '.')
     all_ID[tube_ID] = run_ID
     all_metadata[tube_ID] = line.strip('\n').replace(',', '-')
-    all_prev[line_split[5]] = tube_ID
+    all_prev[tube_ID] = line_split[5]
     line = inp.readline()
 inp.close()
 
