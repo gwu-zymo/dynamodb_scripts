@@ -76,7 +76,7 @@ for run_ID in all_run:
     r_date = []
     for f in os.listdir('./'):
         if f.endswith('.zymo.zip'):
-            r_date.append(float(f.split('.')[1]))
+            r_date.append(int(f.split('.')[1]))
     if len(r_date) > 0:
         n_date = str(max(r_date))
         folder = '%s.%s.zymo' % (run_ID, n_date)
