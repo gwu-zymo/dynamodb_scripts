@@ -74,9 +74,15 @@ for run_ID in all_run:
         oup.write(zip_file + '\n')
         
     r_date = []
+    nd = ''
     for f in os.listdir('./'):
         if f.endswith('.zymo.zip'):
-            r_date.append(int(f.split('.')[1]))
+            try:
+                nd = int(f.split('.')[1])
+            except:
+                pass
+            if nd != '':
+                r_date.append(int(nd))
     if len(r_date) > 0:
         n_date = str(max(r_date))
         folder = '%s.%s.zymo' % (run_ID, n_date)
