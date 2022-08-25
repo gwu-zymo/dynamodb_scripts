@@ -152,23 +152,22 @@ for sample in all_metadata:
                 else:
                     oup.write(',')
             else:
-                #oup.write(',0')
                 oup.write(',')
         oup.write('\n')
         
-    elif all_prev[sample] in all_abd:
-        sample = all_prev[sample]
-        oup.write(all_metadata[sample].replace('\t', ','))
-        for species in all_spe_list:
-            if species in all_abd[sample]:
-                if all_abd[sample][species] != '0' and all_abd[sample][species] != '0.0':
-                    oup.write(',' + all_abd[sample][species])
+    elif sample in all_prev:
+        if all_prev[sample] in all_abd:
+            sample = all_prev[sample]
+            oup.write(all_metadata[sample].replace('\t', ','))
+            for species in all_spe_list:
+                if species in all_abd[sample]:
+                    if all_abd[sample][species] != '0' and all_abd[sample][species] != '0.0':
+                        oup.write(',' + all_abd[sample][species])
+                    else:
+                        oup.write(',')
                 else:
                     oup.write(',')
-            else:
-                #oup.write(',0')
-                oup.write(',')
-        oup.write('\n')
+            oup.write('\n')
 oup.close()
 
 oup = open('not_found.txt', 'w')
