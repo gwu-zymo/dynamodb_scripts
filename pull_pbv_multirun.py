@@ -4,9 +4,11 @@ import os, sys
 #all_run: Run_Number(pbvXXXX):date
 #all_ID: tube_ID_date:Run_Number (only the newest run for each sample, if table in order)
 #all_metadata: tube_ID: whole line
+#all_prev: previous ID: tube_ID
 all_run = {}
 all_ID = {}
 all_metadata = {}
+all_prev = {}
 
 inp = open('TOC_pbv.txt', encoding = 'windows-1252')
 line = inp.readline()
@@ -21,6 +23,7 @@ while line:
     tube_ID = line_split[3].replace('-', '.').replace('_', '.')
     all_ID[tube_ID] = run_ID
     all_metadata[tube_ID] = line.strip('\n').replace(',', '-')
+    all_prev[line_split[5]] = tube_ID
     line = inp.readline()
 inp.close()
 
@@ -141,6 +144,20 @@ for species in all_spe_list:
 oup.write(header.replace('\t', ',') + ',%s\n' % ','.join(all_spe_write))
 for sample in all_metadata:
     if sample in all_abd:
+        oup.write(all_metadata[sample].replace('\t', ','))
+        for species in all_spe_list:
+            if species in all_abd[sample]:
+                if all_abd[sample][species] != '0' and all_abd[sample][species] != '0.0':
+                    oup.write(',' + all_abd[sample][species])
+                else:
+                    oup.write(',')
+            else:
+                #oup.write(',0')
+                oup.write(',')
+        oup.write('\n')
+        
+    elif all_prev[sample] in all_abd:
+        sample = all_prev[sample]
         oup.write(all_metadata[sample].replace('\t', ','))
         for species in all_spe_list:
             if species in all_abd[sample]:
