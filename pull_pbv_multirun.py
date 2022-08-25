@@ -172,6 +172,6 @@ oup.close()
 
 oup = open('not_found.txt', 'w')
 for tube_ID in all_metadata:
-    if not tube_ID in all_abd:
+    if (not tube_ID in all_abd) and (not all_prev[tube_ID] in all_abd):
         oup.write(tube_ID + '\t' + all_ID[tube_ID] + '\n')
 oup.close()
