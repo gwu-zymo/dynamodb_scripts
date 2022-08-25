@@ -79,7 +79,7 @@ for run_ID in all_run:
             if f.endswith('.zymo.zip'):
                 r_date.append(float(f.split('.')[1]))
         n_date = str(max(r_date))
-        folder = '%s.%s.zymo' % (run_ID, r_date)
+        folder = '%s.%s.zymo' % (run_ID, n_date)
     except:
         pass
         
