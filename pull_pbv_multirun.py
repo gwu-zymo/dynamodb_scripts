@@ -157,12 +157,12 @@ for sample in all_metadata:
         
     elif sample in all_prev:
         if all_prev[sample] in all_abd:
-            sample = all_prev[sample]
+            sample_prev = all_prev[sample]
             oup.write(all_metadata[sample].replace('\t', ','))
             for species in all_spe_list:
-                if species in all_abd[sample]:
-                    if all_abd[sample][species] != '0' and all_abd[sample][species] != '0.0':
-                        oup.write(',' + all_abd[sample][species])
+                if species in all_abd[sample_prev]:
+                    if all_abd[sample_prev][species] != '0' and all_abd[sample_prev][species] != '0.0':
+                        oup.write(',' + all_abd[sample_prev][species])
                     else:
                         oup.write(',')
                 else:
