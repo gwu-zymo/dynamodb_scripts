@@ -1,5 +1,5 @@
-#load the table of content
-import os
+#load the table of content, when there is multiple zip files, take the one with the newest date
+import os, sys
 
 #all_run: Run_Number(pbvXXXX):date
 #all_ID: tube_ID_date:Run_Number (only the newest run for each sample, if table in order)
@@ -67,10 +67,21 @@ oup = open('zip_not_found.txt', 'w')
 for run_ID in all_run:
     folder = '%s.%s.zymo' % (run_ID, all_run[run_ID])
     zip_file = 's3://precisionbiome/PrecisionBIOME_Vaginal/Projects/%s/analysis/%s.zip' % (run_ID, folder)
+    file_path = 's3://precisionbiome/PrecisionBIOME_Vaginal/Projects/%s/analysis/' % (run_ID)
     try:
-        os.system('aws s3 cp %s .' % zip_file)
+        os.system('aws s3 sync %s .' % file_path)
     except:
         oup.write(zip_file + '\n')
+        
+    r_date = []
+    try:
+        for f in os.listdir('./'):
+            if f.endswith('.zymo.zip'):
+                r_date.append(float(f.split('.')[1]))
+        n_date = str(max(r_date))
+        folder = '%s.%s.zymo' % (run_ID, r_date)
+    except:
+        pass
         
     try:
         os.system('unzip %s.zip' % folder)
