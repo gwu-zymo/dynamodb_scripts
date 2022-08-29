@@ -66,6 +66,7 @@ def modify_taxonomy_name(species):
     return(new_species)
 
 oup = open('zip_not_found.txt', 'w')
+oup2 = open('multiple_zip.txt', 'w')
 
 for run_ID in all_run:
     folder = '%s.%s.zymo' % (run_ID, all_run[run_ID])
@@ -89,6 +90,8 @@ for run_ID in all_run:
     if len(r_date) > 0:
         n_date = str(max(r_date))
         folder = '%s.%s.zymo' % (run_ID, n_date)
+    if len(r_date) > 1:
+        oup2.write('%s\n' % run_ID)
             
     try:
         os.system('unzip %s.zip' % folder)
@@ -124,6 +127,7 @@ for run_ID in all_run:
     os.system('rm *.zip')
     os.system('rm -r pbv*')
 oup.close()
+oup2.close()
 
 
 oup = open('abundance.csv', 'w')
