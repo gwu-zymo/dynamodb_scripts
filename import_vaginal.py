@@ -57,7 +57,7 @@ def removeEmptyString(lst):
 def batch_write(items):
     dynamodb = boto3.resource('dynamodb', region_name="us-east-1")
 #endpoint_url="http://localhost:8000"
-    db = dynamodb.Table('midog_test')
+    db = dynamodb.Table('pbv')
 
     with db.batch_writer() as batch:
         for item in items:
