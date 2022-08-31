@@ -20,7 +20,8 @@ date_list = []
 
 def convert_csv_to_json_list(file):
     items = []
-    with open(file, newline='', encoding = "utf8") as csvfile:
+    #with open(file, newline='', encoding = "utf8") as csvfile:
+    with open(file, newline='', encoding = "latin-1") as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             data = {}
