@@ -79,7 +79,7 @@ for run_ID in all_run:
         
     r_date = []
     for f in os.listdir('./'):
-        if f.endswith('.zymo.zip'):
+        if f.endswith('.zymo.zip') and (not f.startswith('_')):
             nd = ''
             try:
                 nd = int(f.split('.')[1])
