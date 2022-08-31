@@ -24,7 +24,7 @@ def convert_csv_to_json_list(file):
         reader = csv.DictReader(csvfile)
         for row in reader:
             data = {}
-            print(row['Internal_Sample_ID'], row['Gender'])
+            print(row['Internal_Sample_ID'])
             for key in row:
                 if key != None:
                     if row[key] != '':
