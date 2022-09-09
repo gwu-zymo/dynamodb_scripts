@@ -34,7 +34,8 @@ all_spe = {}
 def read_abd_file(file):
     inp = open(file, 'r')
     line = inp.readline()
-    line = inp.readline()
+    if 'biom file' in line:
+        line = inp.readline()
     sample_order = line.strip('\n').split('\t')[1:]
     for sample in sample_order:
         if sample not in all_abd:
