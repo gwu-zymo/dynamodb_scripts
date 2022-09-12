@@ -97,8 +97,10 @@ for run_ID in all_run:
     try:
         os.system('unzip %s.zip' % folder)
 
-        read_abd_file('./%s/midog.a.Bac16Sv13/taxa_plots/sorted_otu_L7.txt' % folder)
-        read_abd_file('./%s/midog.b.FungiITS/taxa_plots/sorted_otu_L7.txt' % folder)
+        read_abd_file('./%s/midog.a.Bac16Sv13/ABS/3.species.abs.contam.tsv' % folder)
+        read_abd_file('./%s/midog.b.FungiITS/ABS/3.species.abs.contam.tsv' % folder)
+        #read_abd_file('./%s/midog.a.Bac16Sv13/taxa_plots/sorted_otu_L7.txt' % folder)
+        #read_abd_file('./%s/midog.b.FungiITS/taxa_plots/sorted_otu_L7.txt' % folder)
 
         try:
             read_abd_file('./%s/midog.f.AMR/taxa_plots/sorted_otu_L7.txt' % folder)
