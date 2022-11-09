@@ -16,7 +16,8 @@ def get_dynamodb_resource():
     return dynamodb
 
 def scan_whole_table_for_items():
-    filter_expression = Key('k_F_g_Cladosporium_s_Cladosporium_sp').gt(Decimal('0')) & Key('Breed').eq('French Bulldog')
+    filter_expression = Key('Species').contains('unny') | Key('Species').contains('eporidae') | Key('Breed').contains('unny') | Key('Breed').contains('eporidae')
+    #filter_expression = Key('k_F_g_Cladosporium_s_Cladosporium_sp').gt(Decimal('0')) & Key('Breed').eq('French Bulldog')
     #projection_expression = "#rd, Run_Number, Tube_ID, #rd2, AMR1, Age, k_B_g_Staphylococcus_s_aureus, ITS"
     #ean = {"#rd": "k_F_g_Cladosporium_s_Cladosporium_sp", "#rd2": "Breed"}
 
