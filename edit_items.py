@@ -15,8 +15,4 @@ response = db.update_item(
     ReturnValues="UPDATED_NEW"
 )
 
-    with db.batch_writer() as batch:
-
-        
-        
-        
+   
