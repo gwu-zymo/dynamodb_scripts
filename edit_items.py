@@ -1,6 +1,9 @@
 import boto3
 
-response = table.update_item(
+dynamodb = boto3.resource('dynamodb', region_name="us-east-1")
+db = dynamodb.Table('midog_test')
+        
+response = db.update_item(
     Key={
         'ReleaseNumber': releaseNumber,
         'Timestamp': result[0]['Timestamp']
@@ -11,3 +14,9 @@ response = table.update_item(
     },
     ReturnValues="UPDATED_NEW"
 )
+
+    with db.batch_writer() as batch:
+
+        
+        
+        
