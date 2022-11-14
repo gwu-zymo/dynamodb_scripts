@@ -5,12 +5,12 @@ db = dynamodb.Table('midog_test')
         
 response = db.update_item(
     Key={
-        'Internal_Sample_ID': releaseNumber,
-        'Run_Number': result[0]['Timestamp']
+        'Internal_Sample_ID': 'md0043_1',
+        'Run_Number': 'RUN0043'
     },
-    UpdateExpression="set Sanity = :r",
+    UpdateExpression="set Bill = :r",
     ExpressionAttributeValues={
-        ':r': 'false',
+        ':r': 'NA',
     },
     ReturnValues="UPDATED_NEW"
 )
