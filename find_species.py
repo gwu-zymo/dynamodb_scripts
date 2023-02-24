@@ -7,13 +7,11 @@ header = line.strip('\n').split(',')
 line = inp.readline()
 while line:
   ll = line.strip('\n').split(',')
-  for key in header:
-    if key == 'sample_ID':
-      spe = ll[header.index(key)]
-      all[spe] = {}
-  for key in header:
-    if 'Malassezia' in key:
-      all[spe][key] = ll[header.index(key)]
+  id = ll[header.index('Internal_Sample_ID')]
+  all[id] = {}
+  for spe in header:
+    if 'Malassezia' in spe:
+      all[id][spe] = ll[header.index(spe)]
   line = inp.readline()
 inp.close()
 
