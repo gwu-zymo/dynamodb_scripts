@@ -9,10 +9,11 @@ while line:
   ll = line.strip('\n').split(',')
   for key in header:
     if key == 'sample_ID':
-      all[ll[header.index(key)]] = {}
+      spe = ll[header.index(key)]
+      all[spe] = {}
   for key in header:
     if 'Malassezia' in key:
-      all[key] = ll[header.index(key)]
+      all[spe][key] = ll[header.index(key)]
   line = inp.readline()
 inp.close()
 
