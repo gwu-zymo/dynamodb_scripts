@@ -7,7 +7,7 @@ all_run = {}
 all_ID = {}
 all_metadata = {}
 
-inp = open('TOC_1_31_22.txt', encoding = 'windows-1252')
+inp = open('TOC_1_31_22.txt', encoding = 'utf-8')
 line = inp.readline()
 header = line.strip('\n')
 line = inp.readline()
