@@ -44,6 +44,9 @@ def read_abd_file(file):
         line = inp.readline()
     inp.close()
 
+def update_ct(file):
+    
+    
 def modify_taxonomy_name(species):
     split = species.split(';')
     header = [split[0][0:4].replace('__', '_')]
@@ -72,6 +75,7 @@ for run_ID in all_run:
 
         read_abd_file('./%s/midog.a.Bac16Sv13/taxa_plots/sorted_otu_L7.txt' % folder)
         read_abd_file('./%s/midog.b.FungiITS/taxa_plots/sorted_otu_L7.txt' % folder)
+        update_ct('./%s/qPCR/extracted_ct_values.csv' % folder) 
 
         try:
             read_abd_file('./%s/midog.c.AMR/taxa_plots/sorted_otu_L7.txt' % folder)
