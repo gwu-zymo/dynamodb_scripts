@@ -45,7 +45,14 @@ def read_abd_file(file):
     inp.close()
 
 def update_ct(file):
-    
+    inp = open(file, 'r')
+    line = inp.readline()
+    while line:
+        if not line.startswith('#'):
+            line_split = line.strip('\n').split('\t')
+            id = line_split[0]
+            ct = line_split[2:]
+            
     
 def modify_taxonomy_name(species):
     split = species.split(';')
@@ -75,8 +82,7 @@ for run_ID in all_run:
 
         read_abd_file('./%s/midog.a.Bac16Sv13/taxa_plots/sorted_otu_L7.txt' % folder)
         read_abd_file('./%s/midog.b.FungiITS/taxa_plots/sorted_otu_L7.txt' % folder)
-        update_ct('./%s/qPCR/extracted_ct_values.csv' % folder) 
-
+        
         try:
             read_abd_file('./%s/midog.c.AMR/taxa_plots/sorted_otu_L7.txt' % folder)
         except:
@@ -89,7 +95,11 @@ for run_ID in all_run:
             read_abd_file('./%s/midog.k.AMRm/taxa_plots/sorted_otu_L7.txt' % folder)
         except:
             print('no .k')
-
+        try:
+            update_ct('./%s/qPCR/extracted_ct_values.csv' % folder)
+        except:
+            print('no ct')
+        
         os.system('rm *.zip')
         os.system('rm -r md*')
     except:
