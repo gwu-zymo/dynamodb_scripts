@@ -50,8 +50,6 @@ for sample in lines_merged_split:
 inp.close()
 oup.close()
 
-
-                            
                             
                             
                             
