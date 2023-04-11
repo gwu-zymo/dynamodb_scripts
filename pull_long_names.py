@@ -50,8 +50,21 @@ def update_ct(file):
     while line:
         if not line.startswith('#'):
             line_split = line.strip('\n').split('\t')
-            id = line_split[0]
-            ct = line_split[2:]
+            id = line_split[1]
+            ct = [] 
+            for key in line_split[2:7]:
+                try:
+                    a = float(key)
+                    ct.append(key)
+                except:
+                    ct.append('')
+            
+            if id in all_metadata:
+                old = all_metadata[id].split('\t')
+                old[0:5] = ct
+                all_metadata[id] = '\t'.join(old)
+        line = inp.readline()
+    inp.close()
             
     
 def modify_taxonomy_name(species):
