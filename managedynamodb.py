@@ -37,7 +37,7 @@ def scan_whole_table_for_items():
     #projection_expression = "#rd, Run_Number, Tube_ID, Breed, AMR1, Age, k_B_g_Staphylococcus_s_aureus, ITS"
     #ean = {"#rd": "Health_Status_d", }
 
-    response = get_dynamodb_resource().Table("midog_test").scan(
+    response = get_dynamodb_resource().Table("midog_tmp").scan(
         FilterExpression=filter_expression
         #ProjectionExpression=projection_expression,
         #ExpressionAttributeNames=ean
@@ -46,7 +46,7 @@ def scan_whole_table_for_items():
     data = response['Items']
 
     while 'LastEvaluatedKey' in response:
-        response = get_dynamodb_resource().Table("midog_test").scan(
+        response = get_dynamodb_resource().Table("midog_tmp").scan(
             FilterExpression=filter_expression,
             #ProjectionExpression=projection_expression,
             #ExpressionAttributeNames=ean,
