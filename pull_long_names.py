@@ -1,4 +1,5 @@
 #load the table of content
+#using full scientific name of species
 import os
 
 #all_run: Run_Number (mdXXXX):date
