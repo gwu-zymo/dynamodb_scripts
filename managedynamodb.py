@@ -16,7 +16,7 @@ def get_dynamodb_resource():
     return dynamodb
 
 def scan_whole_table_for_items():
-    filter_expression = (Attr('Species').contains('unny') | Attr('Species').contains('eporidae') | Attr('Species').contains('abbit') | Attr('Breed').contains('unny') | Attr('Breed').contains('eporidae') | Attr('Breed').contains('abbit')) & (Attr('Sample_Type ').begins_with('Nos') |Attr('Sample_Type ').begins_with('nos'))
+    filter_expression = (Attr('Species').contains('unny') | Attr('Species').contains('eporidae') | Attr('Species').contains('abbit') | Attr('Breed').contains('unny') | Attr('Breed').contains('eporidae') | Attr('Breed').contains('abbit')) & (Attr('Sample_Type ').begins_with('Nos') |Attr('Sample_Type ').begins_with('nos') | Attr('Sample_Type ').contains('ose') | Attr('Sample_Type ').contains('ostri') | Attr('Sample_Type ').contains('asal'))
     #filter_expression = Key('k_F_g_Cladosporium_s_Cladosporium_sp').gt(Decimal('0')) & Key('Breed').eq('French Bulldog')
     #projection_expression = "#rd, Run_Number, Tube_ID, #rd2, AMR1, Age, k_B_g_Staphylococcus_s_aureus, ITS"
     #ean = {"#rd": "k_F_g_Cladosporium_s_Cladosporium_sp", "#rd2": "Breed"}
