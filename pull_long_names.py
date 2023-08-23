@@ -45,6 +45,24 @@ def read_abd_file(file):
         line = inp.readline()
     inp.close()
 
+def read_abs_tally(file):
+    inp = open(file, 'r')
+    line = inp.readline()
+    line = inp.readline()
+    sample_order = line.strip('\n').split('\t')[1:]
+    for sample in sample_order:
+        if sample not in all_abd:
+            all_abd[sample] = {}
+    line = inp.readline()
+    while line:
+        line_split = line.strip('\n').split('\t')
+        species = line_split[0]
+        all_spe[species] = ''
+        for i in range(0, len(sample_order)):
+            all_abd[sample_order[i]][species] = line_split[i + 1]
+        line = inp.readline()
+    inp.close()
+
 def update_ct(file):
     inp = open(file, 'r')
     line = inp.readline()
