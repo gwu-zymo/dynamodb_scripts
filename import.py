@@ -15,7 +15,7 @@ while True:
     except OverflowError:
         maxInt = int(maxInt/10)
 
-float_list = ["ct_16S", "ct_ITS", "ct_AMR1", "ct_AMR2", "ct_AMRm", "Age_Years"]
+float_list = ["ct_16S", "ct_ITS", "ct_AMR1", "ct_AMR2", "ct_AMRm", "Age_Years", "total_abs_in_cp_nr"]
 date_list = []
 
 def convert_csv_to_json_list(file):
