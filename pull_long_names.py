@@ -56,7 +56,7 @@ def read_abs_tally(file):
     line = inp.readline()
     while line:
         line_split = line.strip('\n').split('\t')
-        list_f = float(num) for num in line_split[1:]
+        list_f = [float(num) for num in line_split[1:]]
         for i in range(0, len(sample_order)):
             all_abd[sample_order[i]]['total_abs_in_cp_nr']+=list_f[i]
         line = inp.readline()
