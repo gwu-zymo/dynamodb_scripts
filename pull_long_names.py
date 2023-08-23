@@ -48,18 +48,17 @@ def read_abd_file(file):
 def read_abs_tally(file):
     inp = open(file, 'r')
     line = inp.readline()
-    line = inp.readline()
     sample_order = line.strip('\n').split('\t')[1:]
     for sample in sample_order:
         if sample not in all_abd:
             all_abd[sample] = {}
+        all_abd[sample]['total_abs_in_cp_nr'] = 0
     line = inp.readline()
     while line:
         line_split = line.strip('\n').split('\t')
-        species = line_split[0]
-        all_spe[species] = ''
+        list_f = float(num) for num in line_split[1:]
         for i in range(0, len(sample_order)):
-            all_abd[sample_order[i]][species] = line_split[i + 1]
+            all_abd[sample_order[i]]['total_abs_in_cp_nr']+=list_f[i]
         line = inp.readline()
     inp.close()
 
@@ -114,7 +113,11 @@ for run_ID in all_run:
 
         read_abd_file('./%s/midog.a.Bac16Sv13/taxa_plots/sorted_otu_L7.txt' % folder)
         read_abd_file('./%s/midog.b.FungiITS/taxa_plots/sorted_otu_L7.txt' % folder)
-        
+
+        try:
+            read_abs_tally('./%s/midog.a.Bac16Sv13/ABS/1.species.abs.tsv' % folder)
+        except:
+            print('no abs')
         try:
             read_abd_file('./%s/midog.c.AMR/taxa_plots/sorted_otu_L7.txt' % folder)
         except:
