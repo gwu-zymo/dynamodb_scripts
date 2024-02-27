@@ -109,39 +109,40 @@ oup = open('zip_not_found.txt', 'w')
 for sample in all_sample:
     folder = 's3://midog/database_by_samples/runs/%s/%s/' % (sample.split('_')[0], sample.split('_')[1])
     
+    read_abd_file('./%s/midog.b.FungiITS/taxa_plots/sorted_otu_L7.txt' % folder)
+
     try:
-        os.system('aws s3 cp %s .' % zip_file)
-        os.system('unzip %s.zip' % folder)
-
-        read_abd_file('./%s/midog.a.Bac16Sv13/taxa_plots/sorted_otu_L7.txt' % folder)
-        read_abd_file('./%s/midog.b.FungiITS/taxa_plots/sorted_otu_L7.txt' % folder)
-
-        try:
-            read_abs_tally('./%s/midog.a.Bac16Sv13/ABS/1.species.abs.tsv' % folder)
-        except:
-            print('no abs')
-        try:
-            read_abd_file('./%s/midog.c.AMR/taxa_plots/sorted_otu_L7.txt' % folder)
-        except:
-            print('no .c')
-        try:
-            read_abd_file('./%s/midog.d.AMR/taxa_plots/sorted_otu_L7.txt' % folder)
-        except:
-            print('no .d')
-        try:
-            read_abd_file('./%s/midog.k.AMRm/taxa_plots/sorted_otu_L7.txt' % folder)
-        except:
-            print('no .k')
-        try:
-            update_ct('./%s/qPCR/extracted_ct_values.csv' % folder)
-        except:
-            print('no ct')
-        
-        os.system('rm *.zip')
-        os.system('rm -r md*')
+        os.system('aws s3 cp %s/a/%sa.taxa.abun.tsv .' % (folder, sample))
+        read_abd_file('%sa.taxa.abun.tsv .' % sample)
     except:
-        print('zip file not found')
-        oup.write(zip_file + '\n')
+        print('no a')
+    try:
+        os.system('aws s3 cp %s/b/%sa.taxa.abun.tsv .' % (folder, sample))
+        read_abd_file('%sb.taxa.abun.tsv .' % sample)
+    except:
+        print('no b')
+    try:
+        os.system('aws s3 cp %s/c/%sa.taxa.abun.tsv .' % (folder, sample))
+        read_abd_file('%sc.taxa.abun.tsv .' % sample)
+    except:
+        print('no c')
+    try:
+        os.system('aws s3 cp %s/d/%sa.taxa.abun.tsv .' % (folder, sample))
+        read_abd_file('%sd.taxa.abun.tsv .' % sample)
+    except:
+        print('no d')
+    try:
+        os.system('aws s3 cp %s/k/%sa.taxa.abun.tsv .' % (folder, sample))
+        read_abd_file('%sk.taxa.abun.tsv .' % sample)
+    except:
+        print('no k')
+    
+    try:
+        update_ct('./%s/qPCR/extracted_ct_values.csv' % folder)
+    except:
+        print('no ct')
+        
+    os.system('rm *.tsv')
 oup.close()
 
 
