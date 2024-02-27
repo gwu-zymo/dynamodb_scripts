@@ -7,6 +7,7 @@ import os
 all_run = {}
 all_ID = {}
 all_metadata = {}
+all_sample = {}
 
 inp = open('TOC_4_10_23_mod.txt', encoding = 'utf-8')
 line = inp.readline()
@@ -16,6 +17,7 @@ while line:
     print(line[:100])
     line_split = line.strip('\n').split('\t')
     print(line_split[8])
+    all_sample[line_split[8]] = ''
     run_ID = line_split[8].split('_')[0]
     all_run[run_ID] = line_split[6]
     all_ID[line_split[9]] = run_ID
