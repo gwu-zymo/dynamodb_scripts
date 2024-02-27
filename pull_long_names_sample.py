@@ -106,9 +106,9 @@ def modify_taxonomy_name(species):
   
 oup = open('zip_not_found.txt', 'w')
 
-for run_ID in all_run:
-    folder = '%s.%s.zymo' % (run_ID, all_run[run_ID])
-    zip_file = 's3://midog/Projects/%s/analysis/%s.zip' % (run_ID, folder)
+for sample in all_sample:
+    folder = 's3://midog/database_by_samples/runs/%s/%s/' % (sample.split('_')[0], sample.split('_')[1])
+    
     try:
         os.system('aws s3 cp %s .' % zip_file)
         os.system('unzip %s.zip' % folder)
