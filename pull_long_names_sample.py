@@ -9,7 +9,7 @@ all_ID = {}
 all_metadata = {}
 all_sample = {}
 
-inp = open('TOC_4_10_23_mod.txt', encoding = 'windows-1252')
+inp = open('TOC_8_23_2023.txt', encoding = 'windows-1252')
 line = inp.readline()
 header = line.strip('\n')
 line = inp.readline()
@@ -109,8 +109,6 @@ oup = open('zip_not_found.txt', 'w')
 for sample in all_sample:
     folder = 's3://midog/database_by_samples/runs/%s/%s/' % (sample.split('_')[0], sample.split('_')[1])
     
-    read_abd_file('./%s/midog.b.FungiITS/taxa_plots/sorted_otu_L7.txt' % folder)
-
     try:
         os.system('aws s3 cp %s/a/%sa.taxa.abun.tsv .' % (folder, sample))
         read_abd_file('%sa.taxa.abun.tsv .' % sample)
