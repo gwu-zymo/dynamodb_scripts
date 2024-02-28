@@ -107,7 +107,7 @@ def modify_taxonomy_name(species):
 oup = open('zip_not_found.txt', 'w')
 
 for sample in all_sample:
-    folder = 's3://midog/database_by_samples/runs/%s/%s/' % (sample.split('_')[0], sample.split('_')[1])
+    folder = 's3://midog/database_by_samples/runs/%s/%s' % (sample.split('_')[0], sample.split('_')[1])
     
     try:
         os.system('aws s3 cp %s/a/%sa.taxa.abun.tsv .' % (folder, sample))
