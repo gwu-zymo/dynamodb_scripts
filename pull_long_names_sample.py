@@ -9,7 +9,7 @@ all_ID = {}
 all_metadata = {}
 all_sample = {}
 
-inp = open('TOC_4_10_23_mod.txt', encoding = 'utf-8')
+inp = open('TOC_4_10_23_mod.txt', encoding = 'windows-1252')
 line = inp.readline()
 header = line.strip('\n')
 line = inp.readline()
