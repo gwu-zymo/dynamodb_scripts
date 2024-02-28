@@ -109,27 +109,27 @@ for sample in all_sample:
     folder = 's3://midog/database_by_samples/runs/%s/%s' % (sample.split('_')[0], sample.split('_')[1])
     
     try:
-        os.system('aws s3 cp %s/a/%sa.taxa.abun.tsv .' % (folder, sample))
+        os.system('aws s3 cp %s/a/%sa.taxa.abun.tsv' % (folder, sample))
         read_abd_file('%sa.taxa.abun.tsv .' % sample)
     except:
         print('no a')
     try:
-        os.system('aws s3 cp %s/b/%sb.taxa.abun.tsv .' % (folder, sample))
+        os.system('aws s3 cp %s/b/%sb.taxa.abun.tsv' % (folder, sample))
         read_abd_file('%sb.taxa.abun.tsv .' % sample)
     except:
         print('no b')
     try:
-        os.system('aws s3 cp %s/c/%sc.taxa.abun.tsv .' % (folder, sample))
+        os.system('aws s3 cp %s/c/%sc.taxa.abun.tsv' % (folder, sample))
         read_abd_file('%sc.taxa.abun.tsv .' % sample)
     except:
         print('no c')
     try:
-        os.system('aws s3 cp %s/d/%sd.taxa.abun.tsv .' % (folder, sample))
+        os.system('aws s3 cp %s/d/%sd.taxa.abun.tsv' % (folder, sample))
         read_abd_file('%sd.taxa.abun.tsv .' % sample)
     except:
         print('no d')
     try:
-        os.system('aws s3 cp %s/k/%sk.taxa.abun.tsv .' % (folder, sample))
+        os.system('aws s3 cp %s/k/%sk.taxa.abun.tsv' % (folder, sample))
         read_abd_file('%sk.taxa.abun.tsv .' % sample)
     except:
         print('no k')
