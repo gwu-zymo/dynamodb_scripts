@@ -67,16 +67,21 @@ def update_ct(file):
     inp = open(file, 'r')
     line = inp.readline()
     while line:
-        if not line.startswith('#'):
-            line_split = line.strip('\n').split('\t')
+        if not line.startswith('InternalID'):
+            line_split = line.strip('\n').split(',')
             id = line_split[1]
             ct = [] 
-            for key in line_split[2:7]:
+            for key in line_split[2:6]:
                 try:
                     a = float(key)
                     ct.append(key)
                 except:
                     ct.append('')
+            try: 
+                a = float(line_split[12])
+                ct.append(key)
+            except:
+                ct.append('')
             
             if id in all_metadata:
                 old = all_metadata[id].split('\t')
