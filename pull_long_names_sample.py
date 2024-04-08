@@ -105,8 +105,10 @@ def modify_taxonomy_name(species):
   
 oup = open('zip_not_found.txt', 'w')
 
+total_run = {}
 for sample in all_sample:
     folder = 's3://midog/database_by_samples/runs/%s/%s' % (sample.split('_')[0], sample.split('_')[1])
+    total_run[sample.split('_')[0]] = ''
     
     try:
         os.system('aws s3 cp %s/a/%sa.taxa.abun.tsv .' % (folder, sample))
@@ -133,10 +135,11 @@ for sample in all_sample:
         read_abd_file('%sk.taxa.abun.tsv' % sample)
     except:
         print('no k')
-    
+
+for folder in total_run:
     try:
-        os.system('aws s3 cp %s/Ctvalues.tsv .' % folder)
-        update_ct('Ctvalue.tsv' % folder)
+        os.system('aws s3 cp %s/Ctvalues.tsv ./%s_Ctvalues.tsv' % (folder, folder))
+        update_ct('%s_Ctvalue.tsv' % folder)
     except:
         print('no ct')
         
