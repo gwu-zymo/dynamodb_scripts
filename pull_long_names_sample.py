@@ -135,7 +135,8 @@ for sample in all_sample:
         print('no k')
     
     try:
-        update_ct('./%s/qPCR/extracted_ct_values.csv' % folder)
+        os.system('aws s3 cp %s/Ctvalues.tsv .' % folder)
+        update_ct('Ctvalue.tsv' % folder)
     except:
         print('no ct')
         
