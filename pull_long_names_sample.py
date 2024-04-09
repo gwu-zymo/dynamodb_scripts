@@ -145,7 +145,7 @@ for folder in total_run:
     try:
         os.system('aws s3 cp s3://midog/database_by_samples/runs/%s/Ctvalues.tsv ./' % folder)
         os.system('mv Ctvalues.tsv %s_Ctvalues.tsv' % folder)
-        update_ct('%s_Ctvalue.tsv' % folder)
+        update_ct('%s_Ctvalues.tsv' % folder)
     except:
         print('no ct')
         
