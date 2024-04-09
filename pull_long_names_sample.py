@@ -140,6 +140,7 @@ for sample in all_sample:
         read_abd_file('%sk.taxa.abun.tsv' % sample)
     except:
         print('no k')
+    os.system('rm *.tsv')
 
 for folder in total_run:
     try:
